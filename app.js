@@ -47,6 +47,21 @@ app.post("/compose", function(req ,res){
   res.redirect("/");
 });
 
+app.get("/posts/:postTitle", function(req, res){
+  const title = req.params.postTitle;
+
+  posts.forEach((post) => {
+    if(post.title === title){
+      const foundPost = {
+        title: post.title,
+        content: post.content
+      }
+
+      res.render("post", {post: foundPost});
+    }
+  })
+})
+
 
 
 
