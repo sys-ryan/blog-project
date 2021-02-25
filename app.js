@@ -86,6 +86,13 @@ app.get("/posts/:postTitle", function(req, res){
   })
 })
 
+app.get("/posts/id/:postId", function(req, res){
+  const id = req.params.postId;
+  Post.findOne({_id: id}, function(err, foundPost){
+    res.render("post", {post: foundPost})
+  })
+})
+
 
 
 
